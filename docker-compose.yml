@@ -1,13 +1,13 @@
-version: '3.8'
+version: '3.8'  # Versión del esquema de Docker Compose
 
 services:
-  # Contenedores en red-frio
+  # ----------- CONTENEDORES EN LA RED "red-frio" -----------
   frio1:
-    image: alpine:3.22
-    container_name: frio1
+    image: alpine:3.22  # Imagen base: Alpine Linux versión 3.22 (ligera y rápida)
+    container_name: frio1  # Nombre del contenedor (visible con docker ps)
     networks:
-      - red-frio
-    command: sh -c "while true; do sleep 3600; done"
+      - red-frio  # Conectado únicamente a la red 'red-frio'
+    command: sh -c "while true; do sleep 3600; done"  # Mantiene el contenedor en ejecución con un bucle infinito
 
   frio2:
     image: alpine:3.22
@@ -30,12 +30,12 @@ services:
       - red-frio
     command: sh -c "while true; do sleep 3600; done"
 
-  # Contenedores en red-caliente
+  # ----------- CONTENEDORES EN LA RED "red-caliente" -----------
   cal1:
     image: alpine:3.22
     container_name: cal1
     networks:
-      - red-caliente
+      - red-caliente  # Conectado únicamente a la red 'red-caliente'
     command: sh -c "while true; do sleep 3600; done"
 
   cal2:
@@ -59,8 +59,9 @@ services:
       - red-caliente
     command: sh -c "while true; do sleep 3600; done"
 
+# ----------- DEFINICIÓN DE LAS REDES PERSONALIZADAS -----------
 networks:
   red-frio:
-    driver: bridge
+    driver: bridge  # Tipo de red: 'bridge' permite comunicación entre contenedores en la misma red
   red-caliente:
     driver: bridge
