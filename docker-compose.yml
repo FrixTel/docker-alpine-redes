@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # Contenedores en red1
+  alpine1:
+    image: alpine:3.22
+    container_name: alpine1
+    networks:
+      - red1
+    command: sh -c "while true; do sleep 3600; done"
+
+  alpine2:
+    image: alpine:3.22
+    container_name: alpine2
+    networks:
+      - red1
+    command: sh -c "while true; do sleep 3600; done"
+
+  alpine3:
+    image: alpine:3.22
+    container_name: alpine3
+    networks:
+      - red1
+    command: sh -c "while true; do sleep 3600; done"
+
+  alpine4:
+    image: alpine:3.22
+    container_name: alpine4
+    networks:
+      - red1
+    command: sh -c "while true; do sleep 3600; done"
+
+  # Contenedores en red2
+  alpine5:
+    image: alpine:3.22
+    container_name: alpine5
+    networks:
+      - red2
+    command: sh -c "while true; do sleep 3600; done"
+
+  alpine6:
+    image: alpine:3.22
+    container_name: alpine6
+    networks:
+      - red2
+    command: sh -c "while true; do sleep 3600; done"
+
+  alpine7:
+    image: alpine:3.22
+    container_name: alpine7
+    networks:
+      - red2
+    command: sh -c "while true; do sleep 3600; done"
+
+  alpine8:
+    image: alpine:3.22
+    container_name: alpine8
+    networks:
+      - red2
+    command: sh -c "while true; do sleep 3600; done"
+
+  # Contenedor sin red personalizada
+  alpine9:
+    image: alpine:3.22
+    container_name: alpine9
+    command: sh -c "while true; do sleep 3600; done"
+
+networks:
+  red1:
+    driver: bridge
+  red2:
+    driver: bridge
