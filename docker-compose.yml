@@ -1,72 +1,66 @@
 version: '3.8'
 
 services:
-  # Contenedores en red1
-  alpine1:
+  # Contenedores en red-frio
+  frio1:
     image: alpine:3.22
-    container_name: alpine1
+    container_name: frio1
     networks:
-      - red1
+      - red-frio
     command: sh -c "while true; do sleep 3600; done"
 
-  alpine2:
+  frio2:
     image: alpine:3.22
-    container_name: alpine2
+    container_name: frio2
     networks:
-      - red1
+      - red-frio
     command: sh -c "while true; do sleep 3600; done"
 
-  alpine3:
+  frio3:
     image: alpine:3.22
-    container_name: alpine3
+    container_name: frio3
     networks:
-      - red1
+      - red-frio
     command: sh -c "while true; do sleep 3600; done"
 
-  alpine4:
+  frio4:
     image: alpine:3.22
-    container_name: alpine4
+    container_name: frio4
     networks:
-      - red1
+      - red-frio
     command: sh -c "while true; do sleep 3600; done"
 
-  # Contenedores en red2
-  alpine5:
+  # Contenedores en red-caliente
+  cal1:
     image: alpine:3.22
-    container_name: alpine5
+    container_name: cal1
     networks:
-      - red2
+      - red-caliente
     command: sh -c "while true; do sleep 3600; done"
 
-  alpine6:
+  cal2:
     image: alpine:3.22
-    container_name: alpine6
+    container_name: cal2
     networks:
-      - red2
+      - red-caliente
     command: sh -c "while true; do sleep 3600; done"
 
-  alpine7:
+  cal3:
     image: alpine:3.22
-    container_name: alpine7
+    container_name: cal3
     networks:
-      - red2
+      - red-caliente
     command: sh -c "while true; do sleep 3600; done"
 
-  alpine8:
+  cal4:
     image: alpine:3.22
-    container_name: alpine8
+    container_name: cal4
     networks:
-      - red2
-    command: sh -c "while true; do sleep 3600; done"
-
-  # Contenedor sin red personalizada
-  alpine9:
-    image: alpine:3.22
-    container_name: alpine9
+      - red-caliente
     command: sh -c "while true; do sleep 3600; done"
 
 networks:
-  red1:
+  red-frio:
     driver: bridge
-  red2:
+  red-caliente:
     driver: bridge
